@@ -17,13 +17,37 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        public void Add(Car car)
+        {
+            if (car.CarName.Length < 2 && car.DailyPrice > 0)
+            {
+                Console.WriteLine("Başarılı Giriş!");
+                _carDal.Add(car);
+            }
+            else
+            {
+                Console.WriteLine("Hatalı Giriş! Lütfen Kontol Ediniz! Araç İsmi 2 harften büyük ve Günlük fiyatı O'dan Büyük Olmalıdır.");
+            }
+        }
+
         public List<Car> GetAll()
         {
             return _carDal.GetAll();
         }
 
-        
-        
+        public List<Car> GetByDailyPrice(decimal min, decimal max)
+        {
+            return _carDal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max);
+        }
 
+        public List<Car> GetCarsByBrandId(int id)
+        {
+            return _carDal.GetAll(c => c.BrandId == id);
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            return _carDal.GetAll(c => c.ColorId == id);
+        }
     }
 }
