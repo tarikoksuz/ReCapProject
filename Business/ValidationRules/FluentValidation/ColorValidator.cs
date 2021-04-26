@@ -10,8 +10,8 @@ namespace Business.ValidationRules.FluentValidation
     {
         public ColorValidator()
         {
-            RuleFor(cl => cl.ColorName).NotEmpty().WithMessage("Renk İsmi Boş Geçilemez!");
-            RuleFor(cl => cl.ColorName).MinimumLength(2).WithMessage("Renk İsmi Min:2 Karakter Olmalıdır!");
+            RuleFor(cl => cl.ColorName).NotEmpty();
+            RuleFor(cl => cl.ColorName).MinimumLength(2);
         }
     }
 }
