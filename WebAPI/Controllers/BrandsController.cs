@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("Add")]
+        [HttpPost("Add")]
         public IActionResult Add(Brand brand)
         {
             var result = _brandService.Add(brand);
@@ -53,7 +53,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("Update")]
+        [HttpPost("Update")]
         public IActionResult Update(Brand brand)
         {
             var result = _brandService.Update(brand);
@@ -64,7 +64,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("Delete")]
+        [HttpPost("Delete")]
         public IActionResult Delete(Brand brand)
         {
             var result = _brandService.Delete(brand);

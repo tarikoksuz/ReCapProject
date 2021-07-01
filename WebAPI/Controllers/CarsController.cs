@@ -86,7 +86,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("Add")]
+        [HttpPost("Add")]
         public IActionResult Add(Car car)
         {
             var result = _carService.Add(car);
@@ -97,7 +97,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("Update")]
+        [HttpPost("Update")]
         public IActionResult Update(Car car)
         {
             var result = _carService.Update(car);
@@ -108,7 +108,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("Delete")]
+        [HttpPost("Delete")]
         public IActionResult Delete(Car car)
         {
             var result = _carService.Delete(car);
@@ -117,6 +117,18 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
             return BadRequest(result);
+        }
+
+        [HttpPost("Transaction")]
+        public IActionResult TransactionTest(Car car)
+        {
+            var result = _carService.AddTransactionalTest(car);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+
+            return BadRequest(result.Message);
         }
 
 
